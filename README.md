@@ -32,3 +32,8 @@ On the right side of the table, I’ve implemented the lending functionality.
 First, select the From and Until dates for the borrowing period.
 Then, click the Search Available Books button to view the books available for lending.
 After selecting a book by clicking its title, the title and author will appear in the textboxes. Finally, click Lend Book to complete the process.
+
+
+As a new feature, I added a red background highlight for books that are out of stock, making them more noticeable to users when they are unavailable for lending. I also implemented a search-by-date-period functionality, which allows users to check which books are available during a selected time range, ensuring that no existing lendings overlap with the chosen dates.
+
+Furthermore, I had planned to transform the application into a client-server architecture. My intention was to implement a login system allowing users to log in either as clients or administrators. Clients would have been able to borrow books and return them earlier if needed. I also intended to use the JSON protocol for communication between the client and the server, integrate an ORM layer for database operations, and implement multithreading to handle each client and admin in separate threads. However, due to time constraints, I was only able to start and complete the project today.
