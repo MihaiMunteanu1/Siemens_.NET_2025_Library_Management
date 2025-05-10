@@ -15,7 +15,7 @@ static class Program
     static void Main()
     {
 
-        var connectionString = "Host=localhost;Port=5432;Username=postgres;Password=rocco1512;Database=booksmanagement";
+        var connectionString = "Host=localhost;Port=5432;Username=postgres;Password=password;Database=booksmanagement";
         var dbProviderFactory = NpgsqlFactory.Instance;
 
         IBookRepository bookRepository = new BookDbRepository(connectionString, dbProviderFactory);    
