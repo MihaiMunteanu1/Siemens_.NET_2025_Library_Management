@@ -6,13 +6,11 @@ using BooksManagement.repository.interfaces;
 namespace BooksManagement.repository.databases;
 
 /**
- * We are using asynchronous methods (async/await) to perform database operations
+ * I am using asynchronous methods (async/await) to perform database operations
  * without blocking the main thread of execution.
  * By using async/await, we perform I/O operations (like database connections and reading data)
  * in a non-blocking manner.
  */
-
-
 public class BookDbRepository : IBookRepository
 {
     
@@ -183,6 +181,12 @@ public class BookDbRepository : IBookRepository
         return reader.Read() ? Task.FromResult(MapReaderToBook(reader)) : Task.FromResult<Book>(null);
     }
 
+    /**
+     * Converts a database record to a Book entity
+     * Maps database fields to corresponding Book properties
+     * @param reader The database record containing book data
+     * @return Book object with data from the database
+     */
     private Book MapReaderToBook(IDataRecord reader)
     {
         var id = reader.GetInt32(reader.GetOrdinal("id"));
@@ -199,6 +203,14 @@ public class BookDbRepository : IBookRepository
         return book;
     }
 
+    /**
+     * Creates a database parameter for use in SQL commands
+     * Handles null values by converting them to DBNull.Value
+     * @param command The database command that will use this parameter
+     * @param name The name of the parameter 
+     * @param value The value to assign to the parameter
+     * @return A database parameter ready to be added to a command's Parameters collection
+     */
     private DbParameter CreateParameter(DbCommand command, string name, object value)
     {
         var parameter = command.CreateParameter();

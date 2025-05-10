@@ -126,6 +126,11 @@ public class LendingDbRepository : ILendingRepository
     }
     
 
+    /**
+     * Maps a data record to a Lending object
+     * @param reader The data record to map
+     * @return A Lending object with the mapped values
+     */
     private Lending MapReaderToLending(IDataRecord reader)
     {
         return new Lending(
@@ -137,7 +142,16 @@ public class LendingDbRepository : ILendingRepository
             Id = reader.GetInt32(reader.GetOrdinal("id"))
         };
     }
-
+    
+    
+    /**
+     * Creates a database parameter for use in SQL commands
+     * Handles null values by converting them to DBNull.Value
+     * @param command The database command that will use this parameter
+     * @param name The name of the parameter
+     * @param value The value to assign to the parameter
+     * @return A database parameter ready to be added to a command's Parameters collection
+     */
     private DbParameter CreateParameter(DbCommand command, string name, object value)
     {
         var parameter = command.CreateParameter();

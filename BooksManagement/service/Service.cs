@@ -3,6 +3,9 @@ using BooksManagement.repository.interfaces;
 
 namespace BooksManagement.service;
 
+/**
+ * Service class that provides methods for managing books and lendings.
+ */
 public class Service : IService
 {
     private readonly IBookRepository _bookRepository;
@@ -72,7 +75,7 @@ public class Service : IService
             throw new ArgumentNullException(nameof(book));
         }
 
-        // Check if the book already exists
+        // check if the book already exists
         var existingBooks = await _bookRepository.GetAllAsync();
         if (existingBooks.Any(b => b.Title.Equals(book.Title, StringComparison.OrdinalIgnoreCase) 
                                    && b.Author.Equals(book.Author, StringComparison.OrdinalIgnoreCase)))
@@ -89,6 +92,7 @@ public class Service : IService
             throw new ArgumentNullException(nameof(book));
         }
 
+        // check if the book exists
         var existingBook = await _bookRepository.GetByIdAsync(book.Id);
         if (existingBook == null)
         {
@@ -100,12 +104,14 @@ public class Service : IService
 
     public async Task DeleteBookAsync(int id)
     {
+        // check if the book exists
         var book = await _bookRepository.GetByIdAsync(id);
         if (book == null)
         {
             throw new KeyNotFoundException($"Book with ID {id} not found.");
         }
 
+        
         await _bookRepository.DeleteAsync(id);
     }
 
@@ -116,32 +122,31 @@ public class Service : IService
         
         var book = await _bookRepository.GetByIdAsync(lending.BookId);
         
-        // Check if the book would be over-lent in the requested period
+        // check if the book would be over-lent in the requested period
         var isOverLent = await IsBookOverLentInPeriodAsync(book, from, to);
         if (isOverLent)
         {
             throw new InvalidOperationException($"Cannot lend book '{book.Title}' - all copies are already lent during the requested period.");
         }
 
-        // Update the lending with the provided dates
+        // update the lending with the provided dates
         lending.from = from;
         lending.to = to;
 
-        // Add the lending to the database
         await _lendingRepository.CreateAsync(lending);
     }
     
     public async Task<bool> IsBookOverLentInPeriodAsync(Book book, DateTime startDate, DateTime endDate)
     {
-        // Get all lendings for this specific book
+        // get all lendings for this specific book
         var bookLendings = await _lendingRepository.GetLendingsByBookIdAsync(book.Id);
     
-        // Count how many lendings overlap with the specified date range
+        // count how many lendings overlap with the specified date range
         int overlappingLendings = 0;
         foreach (var lending in bookLendings)
         {
-            // Check if the lending period overlaps with the requested period
-            // Two date ranges overlap if one starts before or on the day the other ends,
+            // check if the lending period overlaps with the requested period
+            // two date ranges overlap if one starts before or on the day the other ends,
             // and ends after or on the day the other starts
             if (lending.from <= endDate && lending.to >= startDate)
             {
@@ -149,35 +154,35 @@ public class Service : IService
             }
         }
     
-        // If the number of overlapping lendings equals or exceeds the book's quantity,
+        // if the number of overlapping lendings equals or exceeds the book's quantity,
         // the book would be over-lent
         return overlappingLendings >= book.Quantity;
     }
     
-    /// <summary>
-    /// Returns books that are available for lending during the specified period
-    /// </summary>
-    /// <param name="startDate">The start date of the lending period</param>
-    /// <param name="endDate">The end date of the lending period</param>
-    /// <returns>A collection of books available for lending during the specified period</returns>
+    /**
+     * Returns books that are available for lending during the specified period
+     * @param startDate The start date of the lending period
+     * @param endDate The end date of the lending period
+     * returns A collection of books available for lending during the specified period
+     */
     public async Task<IEnumerable<Book>> GetAvailableBooksInPeriodAsync(DateTime startDate, DateTime endDate)
     {
         
-        // Get all books
+        // get all books
         var allBooks = await _bookRepository.GetAllAsync();
         var availableBooks = new List<Book>();
     
-        // Check each book if it's available in the specified period
+        // check each book if it's available in the specified period
         foreach (var book in allBooks)
         {
-            // Skip books with zero quantity
+            // skip books with zero quantity
             if (book.Quantity <= 0)
                 continue;
             
-            // Check if the book would be over-lent in the specified period
+            // check if the book would be over-lent in the specified period
             bool isOverLent = await IsBookOverLentInPeriodAsync(book, startDate, endDate);
         
-            // If the book is not over-lent, it's available
+            // if the book is not over-lent, it's available
             if (!isOverLent)
             {
                 availableBooks.Add(book);
