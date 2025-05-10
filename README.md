@@ -1,33 +1,34 @@
 
-In this app i`m using PostgreSQL as the database to store the books and the lendings, so here i hid my password on main() function.
+In this app, I’m using PostgreSQL as the database to store books and lendings. I’ve hidden my password in the main() function 
 
-When opening the project you will see the main view.
-There is table where you can see all the books and there properties.
-Above the table is where i implemented the searching by some criterias(title, author, year) functionality, following
-the Search Button and the Refresh Button which brings the list to normal.
+When you open the project, you’ll see the main view.
+There is a table displaying all the books along with their properties.
 
-To search you need to fill the TextBox and select only one criteria, then you can press the Search button and the list 
-will be updated with the requested informations.
+Above the table, I’ve implemented a search functionality based on specific criteria (title, author, year). 
+There are also two buttons: Search and Refresh, the latter resetting the table to its default state.
+
+To search, fill in the textbox, select only one criterion, and press the Search button. The table will then display the filtered results.
 ![Screenshot 2025-05-10 214005](https://github.com/user-attachments/assets/c20ffe99-f971-442d-9b86-7d3b8a19a44c)
 
-Search by some criterias functionality
+Search by criteria functionality
 ![Screenshot 2025-05-10 214820](https://github.com/user-attachments/assets/7c9ef796-f1c0-4555-9b56-0f50037dcd1a)
 
-Under the table is where i implemented the Delete, Add and Update functionalities.
+Below the table, I’ve added the Delete, Add, and Update functionalities.
 
-To delete you need to select one book from the list( you can select it by clicking on it`s title), then you can pressed the delete button
-and the list will be updated without the deleted book.
+To delete a book, select it from the list by clicking on its title, then press the Delete button. The list will update accordingly.
 
-To add or update a book, you can either select one from the list and it's details will pe written in the textboxes or you can write them by hand.
-After that, you click Add to add a book to the library or update to update it`s properties.
+To add or update a book, either select one from the list (its details will appear in the textboxes) or enter the details manually.
+Then, click Add to add a new book or Update to modify an existing one.
+
 Create and Update functionalities
 ![Screenshot 2025-05-10 214919](https://github.com/user-attachments/assets/9b4b9049-bd48-4066-91bc-b165aa0fb6c8)
 
 
-When a book is out of stock for lending, it`s background will turn red.
+If a book is out of stock, its row will be highlighted in red.
 ![Screenshot 2025-05-10 215408](https://github.com/user-attachments/assets/4460ea53-b68a-4d49-88cd-5704c8571abc)
 
-On the right of the table is where i designed the lending functionality.
-At first you can select the From date and until date you want to borrow a book and then you can click 'Search Available Books' button to see 
-which ones you can borrow. Then again by clicking one`s title theres title and author will be written in the textboxes and then you can click
-'Lend book' to borrow it.
+On the right side of the table, I’ve implemented the lending functionality.
+
+First, select the From and Until dates for the borrowing period.
+Then, click the Search Available Books button to view the books available for lending.
+After selecting a book by clicking its title, the title and author will appear in the textboxes. Finally, click Lend Book to complete the process.
