@@ -1,5 +1,5 @@
 
-In this app, I’m using PostgreSQL as the database to store books and lendings. I’ve hidden my password in the main() function 
+In this app, I’m using PostgreSQL as the database to store books and lendings. I’ve hidden my password in the main() function. 
 
 When you open the project, you’ll see the main view.
 There is a table displaying all the books along with their properties.
