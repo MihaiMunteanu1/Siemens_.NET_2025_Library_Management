@@ -85,7 +85,6 @@ partial class MainView
         label1.Size = new System.Drawing.Size(555, 91);
         label1.TabIndex = 0;
         label1.Text = "Admin Controller";
-        label1.Click += label1_Click;
         // 
         // panel1
         // 
@@ -110,31 +109,31 @@ partial class MainView
         // 
         columnHeader1.Name = "columnHeader1";
         columnHeader1.Text = "Title";
-        columnHeader1.Width = 104;
+        columnHeader1.Width = 219;
         // 
         // columnHeader2
         // 
         columnHeader2.Name = "columnHeader2";
         columnHeader2.Text = "Author";
-        columnHeader2.Width = 124;
+        columnHeader2.Width = 225;
         // 
         // columnHeader3
         // 
         columnHeader3.Name = "columnHeader3";
         columnHeader3.Text = "Quantity";
-        columnHeader3.Width = 134;
+        columnHeader3.Width = 209;
         // 
         // columnHeader4
         // 
         columnHeader4.Name = "columnHeader4";
         columnHeader4.Text = "Genre";
-        columnHeader4.Width = 129;
+        columnHeader4.Width = 197;
         // 
         // columnHeader5
         // 
         columnHeader5.Name = "columnHeader5";
         columnHeader5.Text = "Price";
-        columnHeader5.Width = 105;
+        columnHeader5.Width = 253;
         // 
         // columnHeader6
         // 

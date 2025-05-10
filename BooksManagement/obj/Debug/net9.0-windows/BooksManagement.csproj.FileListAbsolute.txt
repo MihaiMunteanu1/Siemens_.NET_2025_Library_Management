@@ -18,3 +18,4 @@ C:\Users\munte\RiderProjects\BooksManagement\BooksManagement\obj\Debug\net9.0-wi
 C:\Users\munte\RiderProjects\BooksManagement\BooksManagement\obj\Debug\net9.0-windows\BooksManagement.genruntimeconfig.cache
 C:\Users\munte\RiderProjects\BooksManagement\BooksManagement\obj\Debug\net9.0-windows\ref\BooksManagement.dll
 C:\Users\munte\RiderProjects\BooksManagement\BooksManagement\bin\Debug\net9.0-windows\log4net.dll
+C:\Users\munte\RiderProjects\BooksManagement\BooksManagement\obj\Debug\net9.0-windows\BooksManagement.sourcelink.json
