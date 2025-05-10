@@ -19,6 +19,7 @@ To delete a book, select it from the list by clicking on its title, then press t
 
 To add or update a book, either select one from the list (its details will appear in the textboxes) or enter the details manually.
 Then, click Add to add a new book or Update to modify an existing one.
+All input data is validated and checked before the operation is executed.
 
 Create and Update functionalities
 ![Screenshot 2025-05-10 214919](https://github.com/user-attachments/assets/9b4b9049-bd48-4066-91bc-b165aa0fb6c8)
@@ -32,6 +33,7 @@ On the right side of the table, I’ve implemented the lending functionality.
 First, select the From and Until dates for the borrowing period.
 Then, click the Search Available Books button to view the books available for lending.
 After selecting a book by clicking its title, the title and author will appear in the textboxes. Finally, click Lend Book to complete the process.
+All input data is validated and checked before the operation is executed.
 
 
 As a new feature, I added a red background highlight for books that are out of stock, making them more noticeable to users when they are unavailable for lending. I also implemented a search-by-date-period functionality, which allows users to check which books are available during a selected time range, ensuring that no existing lendings overlap with the chosen dates.
